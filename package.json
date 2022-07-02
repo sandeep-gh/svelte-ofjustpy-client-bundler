@@ -8,12 +8,7 @@
     "lint:js": "eslint --ignore-path .gitignore \"**/*.{js,svelte}\"",
     "lint:css": "stylelint \"**/*.{scss,svelte}\""
   },
-  "dependencies": {
-    "svelte": "^3.38.2"
-  },
   "devDependencies": {
-    "@pangolinjs/eslint-config": "^5.2.0",
-    "@pangolinjs/stylelint-config": "^2.0.5",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
@@ -25,5 +20,9 @@
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.19.0",
     "vite": "^2.3.7"
+  },
+  "dependencies": {
+    "chart.js": "^3.8.0",
+    "svelte": "^3.48.0"
   }
 }

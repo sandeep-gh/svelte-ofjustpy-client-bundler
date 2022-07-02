@@ -14,8 +14,8 @@ export default defineConfig({
     lib: {
       entry: 'src/main.js',
       formats: ['iife'],
-      name: 'SvelteMicroFrontend',
-      fileName: 'svelte-micro-frontend'
+      name: 'jpComponentBuilder',
+      fileName: 'bundle'
     }
   }
 })

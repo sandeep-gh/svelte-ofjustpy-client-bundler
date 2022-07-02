@@ -1,4 +1,4 @@
-# Svelte Micro Frontend Boilerplate
+# 
 
 Basic [Svelte](https://svelte.dev) plus [Vite](https://vitejs.dev) configuration for micro frontend development.
 
