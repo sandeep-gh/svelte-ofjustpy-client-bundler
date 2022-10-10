@@ -1,11 +1,15 @@
-# 
+# dependencies
+
+
 
 Basic [Svelte](https://svelte.dev) plus [Vite](https://vitejs.dev) configuration for micro frontend development.
 
 ## Requirements
 
-* [Node.js](https://nodejs.org)
-* [npm CLI](https://docs.npmjs.com/cli/) (bundled with Node.js)
+* [Node.js](https://nodejs.org) version 18
+* [npm CLI](https://docs.npmjs.com/cli/) (bundled with Node.js)  version 8.100
+
+tested with node version 18 and npm version 8.11
 
 ## Installation
 
@@ -49,4 +53,20 @@ Add the following inside the `<body>` where you want the micro frontend to appea
 
 ```html
 <div id="svelte-micro-frontend"></div>
+```
+
+## Adding tailwind
+```
+npm install -D tailwindcss
+npx tailwindcss init tailwind.config.cjs -p
+```
+
+- create app.css
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind typography;
+
+
 ```

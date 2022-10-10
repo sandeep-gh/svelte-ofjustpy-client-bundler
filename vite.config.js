@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import postcss from './postcss.config.js';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { defineConfig } from 'vite';
+
 
 export default defineConfig({
-  plugins: [
-    svelte({
-      emitCss: false
-    })
-  ],
-
+    plugins: [svelte()],
+  css:{
+    postcss
+  },
   build: {
     assetsDir: '',
     sourcemap: true,

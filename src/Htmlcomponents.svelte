@@ -3,11 +3,15 @@
   export let props = {};
   let self_closing_tags = ['hr', 'input', 'area', 'base', 'br', 'col', 'embed', 'img', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
   import Dummy from "./Dummy.svelte";
-  // import Chart from "./Chart.svelte";
+  import Chart from "./Chart.svelte";
+  import Switch from './Switch.svelte';
   let components = {
-                    'Dummy': Dummy,
-                    // 'ChartJS': Chart
-                   };
+      'Dummy': Dummy,
+    'ChartJS': Chart,
+    'Switch': Switch,
+    'Dummy': Dummy
+    
+  };
   //event_handler.js requires props
   props['jp_props'] = jp_props;
   
@@ -15,14 +19,20 @@
     style: jp_props.style,
    
   };
-  console.log("jp_props for " + jp_props.html_tag);
-  console.log(jp_props);
+  // console.log("jp_props for " + jp_props.html_tag);
+  // console.log(jp_props);
   $: if ('attrs' in jp_props){
    for (const [key, value] of Object.entries(jp_props.attrs)) {
-    description_object[key] = value;
+     description_object[key] = value;
+     
   }
   }
-  
+  console.log("------new htmlcomponent-----");
+  console.log(jp_props.vue_type);
+  console.log(jp_props.classes);
+  console.log("-----------");
+    
+
   $: if (jp_props.classes) {
      description_object['class'] = jp_props.classes
   }
@@ -30,15 +40,15 @@
   let is_self_closing = false;
   if (self_closing_tags.indexOf(jp_props.html_tag) > -1){
     is_self_closing = true;
-    console.log(jp_props.html_tag);
-    console.log("is self closing");
+    // console.log(jp_props.html_tag);
+    // console.log("is self closing");
   }
       
   function dummyEventHandle(event){
-    console.log("from dummyEventHandle");
+    // console.log("from dummyEventHandle");
   }
   function clickEventHandle(event) {
-    console.log("in click eh");
+    // console.log("in click eh");
     eventHandler(props, event, false);
   }
   function inputEventHandle(event){
@@ -93,5 +103,5 @@
 
 {:else}
   <!-- if component is not a html component; svelte syntax differs for html vs svelte component  -->
-  <svelte:component this={components[jp_props.vue_type]}  jp_props={jp_props}/>
+  <svelte:component this={components[jp_props.vue_type]}  {...description_object} jp_props={jp_props}/>
 {/if}

@@ -1,6 +1,10 @@
+import TailwindCss from './TailwindCSS.svelte';
 import App from './App.svelte';
 import Htmlcomponent from './Htmlcomponents.svelte';
 import Chart from "./Chart.svelte";
+import Switch from './Switch.svelte';
+
+
 
 // var justpyComponents = [{
 //     "attrs": {},
