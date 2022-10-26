@@ -5,7 +5,6 @@ import Chart from "./Chart.svelte";
 import Switch from './Switch.svelte';
 
 
-
 // var justpyComponents = [{
 //     "attrs": {},
 //     "id": null,

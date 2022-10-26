@@ -27,14 +27,21 @@
      
   }
   }
-  console.log("------new htmlcomponent-----");
-  console.log(jp_props.vue_type);
-  console.log(jp_props.classes);
-  console.log("-----------");
-    
+
 
   $: if (jp_props.classes) {
      description_object['class'] = jp_props.classes
+  }
+
+  if (jp_props.vue_type == "ChartJS"){
+    console.log("chart js description object ");
+    console.log(description_object);
+    console.log("jp_props");
+    console.log(jp_props)
+  // console.log("------new htmlcomponent-----");
+  // console.log(jp_props.vue_type);
+  // console.log(jp_props.classes);
+  // console.log("-----------");
   }
 
   let is_self_closing = false;
@@ -57,11 +64,18 @@
   function changeEventHandle(event){
     eventHandler(props, event, false);
   }
+
+  function submitEventHandle(event){
+    console.log("in submit event handling");
+    console.log("passing the event without data collection");
+    eventHandler(props, event, false);
+  }
   //for events defined in python -- forward them to eventhandler
   //else use dummyeventhandler
   let click_eh = dummyEventHandle;
   let change_eh = dummyEventHandle;
-  let input_eh = dummyEventHandle;  
+  let input_eh = dummyEventHandle;
+  let submit_eh = dummyEventHandle;
 
   for (let i = 0; i < jp_props.events.length; i++) {
     switch(jp_props.events[i]) {
@@ -76,6 +90,9 @@
       break;
     case "click":
       click_eh = clickEventHandle;
+    case "submit":
+      submit_eh = submitEventHandle;
+      
     }
     
   }
@@ -85,9 +102,9 @@
   <!-- svelte's syntax for input differs from other html components -->
 {#if is_self_closing}
   <!-- <input  {...description_object} on:input={input_eh} on:change={change_eh}> -->
-<svelte:element this={jp_props.html_tag} {...description_object} on:click={click_eh} on:change={change_eh}></svelte:element>
+<svelte:element this={jp_props.html_tag} {...description_object} on:click={click_eh} on:change={change_eh} on:submit|preventDefault={submit_eh}></svelte:element>
 {:else}
-  <svelte:element this={jp_props.html_tag} {...description_object} on:click={click_eh} on:change={change_eh}>
+  <svelte:element this={jp_props.html_tag} {...description_object} on:click={click_eh} on:change={change_eh} on:submit|preventDefault={submit_eh}>
     {#if jp_props.text}
       {jp_props.text}
     {/if}
@@ -105,3 +122,4 @@
   <!-- if component is not a html component; svelte syntax differs for html vs svelte component  -->
   <svelte:component this={components[jp_props.vue_type]}  {...description_object} jp_props={jp_props}/>
 {/if}
+
